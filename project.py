@@ -13,6 +13,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 cap = cv2.VideoCapture(0)
 # To use a video file as input
 # cap = cv2.VideoCapture('filename.mp4')
+
 detect_once = False
 
 while True:
@@ -22,7 +23,8 @@ while True:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # Detect the faces
     faces = face_cascade.detectMultiScale(gray, 1.1, 10)
-
+    
+    # If it is not a false positive
     if (len(faces) > 0) & (detect_once is True):
         # Draw the rectangle around each face
         for (x, y, w, h) in faces:
@@ -37,12 +39,18 @@ while True:
         print(message.sid)
         time.sleep(60)
         detect_once = False
+        
+    # If it may be a false positive
     elif (len(faces) > 0) & (detect_once is False):
         detect_once = True
+        
+    # Display view
     cv2.imshow('img', img)
+    
     # Stop if escape key is pressed
     k = cv2.waitKey(30) & 0xff
     if k==27:
         break
+        
 # Release the VideoCapture object
 cap.release()
