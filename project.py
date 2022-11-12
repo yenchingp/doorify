@@ -34,6 +34,7 @@ while True:
         message = client.messages.create(
             from_='whatsapp:+14155238886',
             body='Someone is at the door.',
+            meida_url='',
             to='whatsapp:+6591465989'
         )
         print(message.sid)
