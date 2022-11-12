@@ -1,7 +1,7 @@
 # Doorify
 
 ## Description
-The file uses OpenCV facial recognition to send Whatsapp notification to users using Twilio when a face is detected.
+The file uses OpenCV facial recognition to send Whatsapp notification and an image to users using Twilio when a face is detected.
 
 ## Quickstart
 1. Clone the repository
